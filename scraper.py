@@ -13,6 +13,8 @@ url = f'https://dorm.kyonggi.ac.kr:446/Khostel/mall_main.php?viewform=B0001_food
 
 response = requests.get(url)
 
-soup = BeautifulSoup(response.text, 'html.parser')
+soup = BeautifulSoup(response.content.decode('euc-kr', 'replace'), 'html.parser')
+
+parsedSoup = soup.select('div > .cate')
 
 print(soup)
