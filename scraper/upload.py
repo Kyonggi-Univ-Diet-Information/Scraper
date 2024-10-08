@@ -16,7 +16,6 @@ response = s3_client.generate_presigned_post(
     ExpiresIn = 10
 )
 
-print(response)
 files = {'file' : open(OBJECT_NAME_TO_UPLOAD, 'rb')}
 r = requests.post(response['url'], data=response['fields'], files=files)
 print(r.status_code)

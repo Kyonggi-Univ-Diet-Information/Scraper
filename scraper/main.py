@@ -1,5 +1,6 @@
 import logging
 import datetime
+import subprocess
 from scrapy.crawler import CrawlerProcess
 from scraper.spiders.dorm import DormSpider
 from scrapy.utils.project import get_project_settings
@@ -23,3 +24,5 @@ def run_spider():
 
 if __name__ == "__main__":
     run_spider()
+    result = subprocess.run(['python', 'upload.py'], capture_output=True, text=True)
+    print(result.stdout)
