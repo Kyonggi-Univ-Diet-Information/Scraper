@@ -7,6 +7,7 @@ import scrapy
 
 
 class ScraperItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    date = scrapy.Field()
+    breakfast = scrapy.Field()
+    lunch = scrapy.Field()
+    dinner = scrapy.Field()
