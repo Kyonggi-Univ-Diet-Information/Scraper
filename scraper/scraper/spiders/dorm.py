@@ -1,13 +1,22 @@
 import scrapy
-
+from datetime import datetime
 
 class DormSpider(scrapy.Spider):
     name = "dorm"
     allowed_domains = ["dorm.kyonggi.ac.kr"]
-    start_urls = ["https://dorm.kyonggi.ac.kr:446/Khostel/mall_main.php?viewform=B0001_foodboard_list&gyear=2024&gmonth=10&gday=07"]
+
+    def start_requests(self):
+            # 현재 날짜를 가져옵니다.
+            today = datetime.now()
+            year = today.strftime("%Y")
+            month = today.strftime("%m")
+            day = today.strftime("%d")
+
+            # 동적으로 URL을 생성합니다.
+            url = f"https://dorm.kyonggi.ac.kr:446/Khostel/mall_main.php?viewform=B0001_foodboard_list&gyear={year}&gmonth={month}&gday={day}"
+            yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-
         decoded_body = response.body.decode('euc-kr')
 
         for row in response.css("table.boxstyle02 tbody tr"):
