@@ -17,7 +17,7 @@ def run_spider():
         level=logging.DEBUG
     )
 
-    process = CrawlerProcess()
+    process = CrawlerProcess(settings)
     process.crawl(DormSpider)
     process.start()
 
