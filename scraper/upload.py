@@ -8,7 +8,7 @@ s3_client = boto3.client(
     's3',
     aws_access_key_id = constants.access_key,
     aws_secret_access_key = constants.secret_access_key,
-    region_name = 'us-east-1'
+    region_name = 'ap-northeast-2'
 )
 
 response = s3_client.generate_presigned_post(
