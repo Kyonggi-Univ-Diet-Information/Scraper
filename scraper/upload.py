@@ -12,7 +12,7 @@ s3_client = boto3.client(
 )
 
 response = s3_client.generate_presigned_post(
-    Bucket = 'dorm-menu',
+    Bucket = 'dorm-week-menu',
     Key = OBJECT_NAME_TO_UPLOAD,
     ExpiresIn = 60
 )
